@@ -9,6 +9,21 @@ namespace BLL
 {
     public class BLLStock : BE.ICrud<BE.Articulo>
     {
+        #region singleton
+        private BLLStock()
+        {
+
+        }
+        private static BLLStock instancia;
+        public static BLLStock getInstancia()
+        {
+            if (instancia == null)
+            {
+                instancia = new BLLStock();
+            }
+            return instancia;
+        } 
+        #endregion
         public bool Add(Articulo entAlta)
         {
             throw new NotImplementedException();

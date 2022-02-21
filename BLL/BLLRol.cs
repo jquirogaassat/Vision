@@ -9,6 +9,21 @@ namespace BLL
 {
     public class BLLRol : BE.ICrud<BE.Usuario>
     {
+        #region singleton
+        private BLLRol()
+        {
+
+        }
+        private static BLLRol instancia;
+        public static BLLRol getInstancia()
+        {
+            if (instancia == null)
+            {
+                instancia = new BLLRol();
+            }
+            return instancia;
+        } 
+        #endregion
         public bool Add(Usuario entAlta)
         {
             throw new NotImplementedException();
