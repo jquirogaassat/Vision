@@ -24,6 +24,7 @@ namespace BLL
             return instancia;
         } 
         #endregion
+
         public bool Add(Articulo entAlta)
         {
             throw new NotImplementedException();
