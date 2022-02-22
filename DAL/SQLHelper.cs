@@ -18,26 +18,29 @@ namespace DAL
         private DataTable dt;
 
 
+        #region singleton
         public string connstring { get; private set; }
 
         private SQLHelper(string connStr)
         {
-            this.connstring = connStr;  
+            this.connstring = connStr;
         }
         private static SQLHelper instancia;
         public static SQLHelper getInstancia(string connString)
         {
-            if(instancia==null)
+            if (instancia == null)
             {
                 instancia = new SQLHelper(connString);
             }
             return instancia;
         }
+        #endregion
 
 
+        #region executequery
         public bool ExecuteQuery(string query)
         {
-            bool returnValue= false;
+            bool returnValue = false;
 
             try
             {
@@ -65,39 +68,41 @@ namespace DAL
                 throw ex;
             }
 
-            return returnValue; 
+            return returnValue;
         }
+        #endregion
 
-        public bool ExecuteQuery(string storeprocedure, List<SqlParameter>parametros)
+        #region executequery with storeprocedure
+        public bool ExecuteQuery(string storeprocedure, List<SqlParameter> parametros)
         {
             bool returnValue = false;
 
             try
             {
-                using(conn= new SqlConnection(this.connstring))
+                using (conn = new SqlConnection(this.connstring))
                 {
-                    using(command = new SqlCommand())
+                    using (command = new SqlCommand())
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Connection = conn;
                         command.CommandText = storeprocedure;
 
-                        if (parametros!=null)
+                        if (parametros != null)
                         {
-                            foreach(SqlParameter parametro in parametros)
+                            foreach (SqlParameter parametro in parametros)
                             {
                                 command.Parameters.Add(parametro);
                             }
                         }
                         conn.Open();
 
-                        if (command.ExecuteNonQuery()>0)
+                        if (command.ExecuteNonQuery() > 0)
                         {
                             returnValue = true;
                         }
                         conn.Close();
                     }
-                }   
+                }
 
             }
             catch (Exception ex)
@@ -106,25 +111,27 @@ namespace DAL
             }
             return returnValue;
         }
+        #endregion
 
-        public bool ExecuteQuery(string storeprocedure, List<SqlParameter>parametros, params SqlParameter[] parametrosArray)
+        #region executequery with storeprocedure and params
+        public bool ExecuteQuery(string storeprocedure, List<SqlParameter> parametros, params SqlParameter[] parametrosArray)
         {
             bool returnValue = false;
 
 
             try
             {
-                using(conn = new SqlConnection(this.connstring))
+                using (conn = new SqlConnection(this.connstring))
                 {
-                    using(command= new SqlCommand()) 
+                    using (command = new SqlCommand())
                     {
-                        command.CommandType= CommandType.StoredProcedure;
+                        command.CommandType = CommandType.StoredProcedure;
                         command.Connection = conn;
-                        command.CommandText= storeprocedure;
+                        command.CommandText = storeprocedure;
 
-                        if (parametros !=null)
+                        if (parametros != null)
                         {
-                            foreach(SqlParameter parameter in parametros)
+                            foreach (SqlParameter parameter in parametros)
                             {
                                 command.Parameters.Add(parameter);
                             }
@@ -137,7 +144,7 @@ namespace DAL
                         }
                         conn.Open();
 
-                        if (command.ExecuteNonQuery()>0)
+                        if (command.ExecuteNonQuery() > 0)
                         {
                             returnValue = true;
                         }
@@ -152,17 +159,19 @@ namespace DAL
             }
             return returnValue;
         }
+        #endregion
 
+        #region datatable ado disconNected
         public DataTable ExecuteReader(string query)
         {
-            ds= new DataSet();
+            ds = new DataSet();
 
-            using(conn= new SqlConnection(this.connstring))
+            using (conn = new SqlConnection(this.connstring))
             {
-                using(command = new SqlCommand())
+                using (command = new SqlCommand())
                 {
                     adapter = new SqlDataAdapter();
-                    command.CommandText= query;
+                    command.CommandText = query;
                     command.CommandType = CommandType.Text;
                     command.Connection = conn;
 
@@ -172,17 +181,19 @@ namespace DAL
             }
             return ds.Tables[0];
         }
+        #endregion
 
-        public DataTable ExecuteReader( string storeprocedure, List<SqlParameter>parametros)
+        #region datatable ado disconnected with SP
+        public DataTable ExecuteReader(string storeprocedure, List<SqlParameter> parametros)
         {
-            ds= new DataSet();
-            
-            using (conn= new SqlConnection(this.connstring))
+            ds = new DataSet();
+
+            using (conn = new SqlConnection(this.connstring))
             {
-                using(command= new SqlCommand())
+                using (command = new SqlCommand())
                 {
-                    adapter= new SqlDataAdapter();
-                    
+                    adapter = new SqlDataAdapter();
+
                     command.CommandText = storeprocedure;
                     command.CommandType = CommandType.StoredProcedure;
                     command.Connection = conn;
@@ -191,32 +202,34 @@ namespace DAL
                     {
                         command.Parameters.AddRange(parametros.ToArray());
                     }
-                    adapter.SelectCommand= command;
+                    adapter.SelectCommand = command;
                     adapter.Fill(ds);
                 }
             }
             return ds.Tables[0];
         }
+        #endregion
 
-        public DataTable ExecuteReader (string storeprocedure, List<SqlParameter>parametros, params SqlParameter[]parametrosArray)
+        #region datatable with ado disconnected and SP/PARAMS
+        public DataTable ExecuteReader(string storeprocedure, List<SqlParameter> parametros, params SqlParameter[] parametrosArray)
         {
-            ds= new DataSet();  
-            using(conn= new SqlConnection(this.connstring))
+            ds = new DataSet();
+            using (conn = new SqlConnection(this.connstring))
             {
-                using(command = new SqlCommand())
+                using (command = new SqlCommand())
                 {
                     adapter = new SqlDataAdapter();
 
-                    command.CommandType= CommandType.StoredProcedure;
-                    command.CommandText= storeprocedure;
-                    command.Connection= conn;
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = storeprocedure;
+                    command.Connection = conn;
 
-                    if(parametros != null)
+                    if (parametros != null)
                     {
                         command.Parameters.AddRange(parametros.ToArray());
                     }
 
-                    if(parametrosArray != null)
+                    if (parametrosArray != null)
                     {
                         command.Parameters.AddRange(parametrosArray);
                     }
@@ -226,6 +239,7 @@ namespace DAL
             }
 
             return ds.Tables[0];
-        }
+        } 
+        #endregion
     }
 }
