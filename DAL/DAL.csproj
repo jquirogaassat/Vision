@@ -44,6 +44,8 @@
     <Compile Include="DALArticulo.cs" />
     <Compile Include="DALCliente.cs" />
     <Compile Include="DALDespacho.cs" />
+    <Compile Include="DALEstadistica.cs" />
+    <Compile Include="DALFactura.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLHelper.cs" />
   </ItemGroup>

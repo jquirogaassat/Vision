@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BE;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class BLLEstadistica
+    public class BLLEstadistica : BE.ICrud<BE.Estadistica>
     {
         #region singleton 
         private BLLEstadistica()
@@ -26,6 +27,26 @@ namespace BLL
         public static int generarMetrica()
         {
             return 1;
+        }
+
+        public bool Add(Estadistica entAlta)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete(Estadistica entAlta)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Update(Estadistica entAlta)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Estadistica> GetAll()
+        {
+            throw new NotImplementedException();
         }
     }
 }
