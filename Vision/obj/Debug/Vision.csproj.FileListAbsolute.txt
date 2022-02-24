@@ -1,0 +1,10 @@
+C:\Users\jair\source\repos\Vision\Vision\bin\Debug\Vision.exe.config
+C:\Users\jair\source\repos\Vision\Vision\bin\Debug\Vision.exe
+C:\Users\jair\source\repos\Vision\Vision\bin\Debug\Vision.pdb
+C:\Users\jair\source\repos\Vision\Vision\obj\Debug\Vision.csproj.AssemblyReference.cache
+C:\Users\jair\source\repos\Vision\Vision\obj\Debug\Vision.csproj.SuggestedBindingRedirects.cache
+C:\Users\jair\source\repos\Vision\Vision\obj\Debug\Vision.Properties.Resources.resources
+C:\Users\jair\source\repos\Vision\Vision\obj\Debug\Vision.csproj.GenerateResource.cache
+C:\Users\jair\source\repos\Vision\Vision\obj\Debug\Vision.csproj.CoreCompileInputs.cache
+C:\Users\jair\source\repos\Vision\Vision\obj\Debug\Vision.exe
+C:\Users\jair\source\repos\Vision\Vision\obj\Debug\Vision.pdb

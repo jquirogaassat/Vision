@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "82066e24-2aeb-497d-8b70-a59091bc22fb": {
+      "ProjectGuid": "82066e24-2aeb-497d-8b70-a59091bc22fb",
+      "DisplayName": "Vision",
+      "ColorIndex": 0
+    },
+    "c8dfc2dc-67a0-4bc6-a4fc-9d1a26ab3abd": {
+      "ProjectGuid": "c8dfc2dc-67a0-4bc6-a4fc-9d1a26ab3abd",
+      "DisplayName": "BE",
+      "ColorIndex": 1
+    },
+    "004117dd-aae0-4d98-8940-48122b08ffed": {
+      "ProjectGuid": "004117dd-aae0-4d98-8940-48122b08ffed",
+      "DisplayName": "BLL",
+      "ColorIndex": 2
+    },
+    "fedc497a-0e08-402a-a1e1-3cc465cf3fc1": {
+      "ProjectGuid": "fedc497a-0e08-402a-a1e1-3cc465cf3fc1",
+      "DisplayName": "DAL",
+      "ColorIndex": 3
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Archivos varios",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 4
+}

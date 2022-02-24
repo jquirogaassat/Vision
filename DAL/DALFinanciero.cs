@@ -9,7 +9,9 @@ namespace DAL
 {
     public class DALFinanciero : BE.ICrud<BE.Financiero>
     {
-        public bool Add(Financiero entAlta)
+
+        
+        public bool Add(Financiero entAlta)   
         {
             throw new NotImplementedException();
         }
