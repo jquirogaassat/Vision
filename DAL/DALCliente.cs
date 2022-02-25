@@ -9,6 +9,21 @@ namespace DAL
 {
     public class DALCliente : BE.ICrud<BE.Cliente>
     {
+        #region singleton
+        private DALCliente()
+        {
+
+        }
+        private static DALCliente instancia;
+        public static DALCliente GetInstancia()
+        {
+            if (instancia == null)
+            {
+                instancia = new DALCliente();
+            }
+            return instancia;
+        } 
+        #endregion
         public bool Add(Cliente entAlta)
         {
             throw new NotImplementedException();

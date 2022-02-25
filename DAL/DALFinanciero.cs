@@ -9,8 +9,20 @@ namespace DAL
 {
     public class DALFinanciero : BE.ICrud<BE.Financiero>
     {
+        #region singleton
+        private DALFinanciero()
+        { }
+        private static DALFinanciero instancia;
+        public static DALFinanciero GetInstancia()
+        {
+            if (instancia == null)
+            {
+                instancia = new DALFinanciero();
+            }
+            return instancia;
+        } 
+        #endregion
 
-        
         public bool Add(Financiero entAlta)   
         {
             throw new NotImplementedException();

@@ -9,6 +9,20 @@ namespace DAL
 {
     public class DALEstadistica : BE.ICrud<BE.Estadistica>
     {
+        #region singleton
+        private DALEstadistica()
+        { }
+        private static DALEstadistica instancia;
+        public static DALEstadistica GetInstancia()
+        {
+            if (instancia == null)
+            {
+                instancia = new DALEstadistica();
+            }
+            return instancia;
+        } 
+        #endregion
+
         public bool Add(Estadistica entAlta)
         {
             throw new NotImplementedException();
